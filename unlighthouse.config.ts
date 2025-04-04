@@ -5,6 +5,11 @@ export default {
   // ],
   scanner: {
     device: "desktop",
+    exclude: [
+      "/travel-tips/*",
+      "/news/*",
+      "/faq/*",
+    ]
   },
   ci: {
     // budget: {
