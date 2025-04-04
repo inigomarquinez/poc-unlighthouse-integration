@@ -1,0 +1,40 @@
+name: Unlighthouse Assertion and Static Report
+
+on:
+  workflow_dispatch:
+
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          fetch-depth: 0
+
+      - name: ⚙️ Setup Node.js
+        uses: actions/setup-node@cdca7365b2dadb8aad0a33bc7601856ffabcc48e # v4.3.0
+        with:
+          cache: "npm"
+          node-version: "22"
+
+      - name: 📦 Install dependencies
+        run: npm ci
+
+      - name: 🔎 Unlighthouse assertions and client
+        run: unlighthouse-ci --config-file unlighthouse.config.ts
+
+      - name: ⬆️ Upload to GitHub Pages artifact
+        uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3.0.1
+        with:
+          path: .unlighthouse
+
+  deploy:
+    needs: demo
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - name: 🚀 Deploy to GitHub Pages
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4.0.5

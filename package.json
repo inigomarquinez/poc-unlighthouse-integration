@@ -1,0 +1,27 @@
+{
+  "name": "poc-unlighthouse-integration",
+  "version": "1.0.0",
+  "description": "PoC for integrating the Unlighthouse tool in a CI environment",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/inigomarquinez/poc-unlighthouse-integration.git"
+  },
+  "keywords": [
+    "poc",
+    "unlighthouse"
+  ],
+  "author": "Íñigo Marquínez Prado",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/inigomarquinez/poc-unlighthouse-integration/issues"
+  },
+  "homepage": "https://github.com/inigomarquinez/poc-unlighthouse-integration#readme",
+  "scripts": {
+    "start": "unlighthouse-ci"
+  },
+  "dependencies": {
+    "@unlighthouse/cli": "^0.16.3",
+    "puppeteer": "^24.6.0"
+  }
+}
