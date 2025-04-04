@@ -1,8 +1,11 @@
 export default {
   site: "esim.holafly.com",
-  urls: [
-    "/"
-  ],
+  // urls: [
+  //   "/"
+  // ],
+  scanner: {
+    device: "desktop",
+  },
   ci: {
     // budget: {
     //   "performance": 50,
