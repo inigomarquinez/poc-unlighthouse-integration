@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  demo:
+  unlighthouse:
     runs-on: ubuntu-latest
     steps:
       - name: 📥 Checkout code
@@ -22,7 +22,7 @@ jobs:
         run: npm ci
 
       - name: 🔎 Unlighthouse assertions and client
-        run: unlighthouse-ci --config-file unlighthouse.config.ts
+        run: npm start
 
       - name: ⬆️ Upload to GitHub Pages artifact
         uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3.0.1
@@ -30,7 +30,7 @@ jobs:
           path: .unlighthouse
 
   deploy:
-    needs: demo
+    needs: unlighthouse
     runs-on: ubuntu-latest
     permissions:
       pages: write
